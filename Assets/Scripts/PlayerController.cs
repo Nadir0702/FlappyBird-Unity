@@ -17,6 +17,15 @@ public class PlayerController : Singleton<PlayerController>
     void Update()
     {
         handleJump();
+        handleStartGame();
+    }
+
+    private void handleStartGame()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            
+        }
     }
 
     private void FixedUpdate()
