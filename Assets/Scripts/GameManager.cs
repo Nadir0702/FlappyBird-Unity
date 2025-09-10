@@ -21,10 +21,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-        {
-            m_GameOn = true;
-        }
+        // if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        // {
+        //     m_GameOn = true;
+        // }
 
         if(!m_GameOn)
         {
@@ -67,5 +67,12 @@ public class GameManager : Singleton<GameManager>
                 pipe.Deactivate();
             }
         }
+    }
+
+    public void OnStartGameClicked()
+    {
+        m_Score = 0;
+        m_GameOn = true;
+        m_ActivePipes = 0;
     }
 }
