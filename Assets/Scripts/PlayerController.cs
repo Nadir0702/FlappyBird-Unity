@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
@@ -7,12 +6,6 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float m_JumpForce;
     
     private bool m_Jump;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -32,7 +25,6 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (m_Jump)
         {
-            // This will apply a constant force every physics frame
             m_Bird.Rigidbody2D.linearVelocity = Vector2.zero;
             var forceVector = Vector2.up * m_JumpForce;
             m_Bird.Rigidbody2D.AddForce(forceVector, ForceMode2D.Force);
