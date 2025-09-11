@@ -11,6 +11,7 @@ public class CanvasManager : Singleton<CanvasManager>
     [SerializeField] private GameObject m_Logo;
     [SerializeField] private GameObject m_StartScreen;
     [SerializeField] private GameObject m_MenuScreen;
+    [SerializeField] private TextMeshProUGUI m_Score;
     [SerializeField] private List<TextMeshProUGUI> m_LeaderBoardTexts;
     [SerializeField] private TextMeshProUGUI m_CurrentScoreText;
  
@@ -19,6 +20,7 @@ public class CanvasManager : Singleton<CanvasManager>
         m_Logo.SetActive(true);
         m_StartScreen.SetActive(true);
         m_MenuScreen.SetActive(false);
+        m_Score.gameObject.SetActive(false);
     }
     
     public void OnStartButtonClickedHandler()
@@ -26,6 +28,8 @@ public class CanvasManager : Singleton<CanvasManager>
         m_Logo.SetActive(false);
         m_StartScreen.SetActive(false);
         m_MenuScreen.SetActive(false);
+        m_Score.gameObject.SetActive(true);
+        resetScore();
         GameManager.Instance.OnStartGameClicked();
         PlayerController.Instance.ActivateController();
     }
@@ -34,6 +38,8 @@ public class CanvasManager : Singleton<CanvasManager>
     {
         m_Logo.SetActive(false);
         m_MenuScreen.SetActive(false);
+        m_Score.gameObject.SetActive(true);
+        resetScore();
         GameManager.Instance.OnStartGameClicked();
         PlayerController.Instance.ActivateController();
     }
@@ -51,6 +57,7 @@ public class CanvasManager : Singleton<CanvasManager>
     {
         m_Logo.SetActive(true);
         m_MenuScreen.SetActive(true);
+        m_Score.gameObject.SetActive(false);
         populateMenu(i_CurrentScore, i_LeaderBoard);
     }
 
@@ -62,5 +69,15 @@ public class CanvasManager : Singleton<CanvasManager>
         {
             m_LeaderBoardTexts[i].text = (i + 1) + ":........ " + i_LeaderBoard[i];
         }
+    }
+    
+    public void UpdateScore(int i_Score)
+    {
+        m_Score.text = i_Score.ToString();
+    }
+
+    private void resetScore()
+    {
+        m_Score.text = "0";
     }
 }

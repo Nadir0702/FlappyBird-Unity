@@ -8,8 +8,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Pipe m_PipePrefab;
     [SerializeField] private float m_PipeSpeed;
     
-    [SerializeField] private TextMeshProUGUI m_ScoreText;
-    
     private List<int> m_LeaderBoard;
     private int m_Score;
 
@@ -61,7 +59,7 @@ public class GameManager : Singleton<GameManager>
     public void UpdateScore()
     {
         m_Score++;
-        Debug.Log("Score: " + m_Score);
+        CanvasManager.Instance.UpdateScore(m_Score);
     }
 
     public void HandleCrash()
