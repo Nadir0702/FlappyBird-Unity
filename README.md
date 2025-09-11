@@ -4,7 +4,6 @@ A faithful recreation of the classic Flappy Bird game built with **Unity 6.0**. 
 
 ![Unity](https://img.shields.io/badge/Unity-6000.0.54f1-blue.svg)
 ![C#](https://img.shields.io/badge/C%23-239120.svg?logo=c-sharp&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## 🎮 Game Features
 
