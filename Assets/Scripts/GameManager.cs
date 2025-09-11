@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,26 +7,33 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private Pipe m_PipePrefab;
     [SerializeField] private float m_PipeSpeed;
-
+    
+    [SerializeField] private TextMeshProUGUI m_ScoreText;
+    
+    private List<int> m_LeaderBoard;
     private int m_Score;
-    private bool m_GameOn;
+
+    public GameState m_GameState { get; private set; } = GameState.NotStarted;
+
     private int m_ActivePipes;
 
     private BestObjectPool<Pipe> m_PipePool;
 
     private void Awake()
     {   
+        m_LeaderBoard = new List<int>(Constants.LeaderBoardSize);
+        for(int i = 0; i < m_LeaderBoard.Capacity; i++)
+        {
+            m_LeaderBoard.Add(0);
+        }
+        
         m_PipePool = new BestObjectPool<Pipe>(m_PipePrefab, Constants.NumOfPipes,Constants.NumOfPipes);
+        m_Score = 0;
     }
 
     private void Update()
     {
-        // if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-        // {
-        //     m_GameOn = true;
-        // }
-
-        if(!m_GameOn)
+        if(m_GameState != GameState.InProgress)
         {
             return;
         }
@@ -59,6 +66,32 @@ public class GameManager : Singleton<GameManager>
 
     public void HandleCrash()
     {
+        m_GameState = GameState.GameOver;
+        stopPipes();
+        PlayerController.Instance.DeactivateController();
+        updateLeaderBoard();
+        CanvasManager.Instance.ShowMenuScreen(m_Score, m_LeaderBoard);
+    }
+
+    private void updateLeaderBoard()
+    {
+        var newLeaderboard = new List<int>(m_LeaderBoard.Capacity + 1);
+        foreach(var score in m_LeaderBoard)
+        {
+            newLeaderboard.Add(score);
+        }
+        
+        newLeaderboard.Add(m_Score);
+        newLeaderboard.Sort((a, b) => b.CompareTo(a));
+        
+        for(int i = 0; i < m_LeaderBoard.Capacity; i++)
+        {
+            m_LeaderBoard[i] = newLeaderboard[i];
+        }
+    }
+
+    private void stopPipes()
+    {
         var activePipes = FindObjectsByType<Pipe>(FindObjectsSortMode.None);
         foreach (var pipe in activePipes)
         {
@@ -72,7 +105,7 @@ public class GameManager : Singleton<GameManager>
     public void OnStartGameClicked()
     {
         m_Score = 0;
-        m_GameOn = true;
+        m_GameState = GameState.InProgress;
         m_ActivePipes = 0;
     }
 }

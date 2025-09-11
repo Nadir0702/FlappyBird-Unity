@@ -6,18 +6,20 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float m_JumpForce;
     
     private bool m_Jump;
-
-    void Update()
+    private bool m_Active;
+    
+    private void Start()
     {
-        handleJump();
-        handleStartGame();
+        m_Jump = false;
+        m_Active = false;
+        m_Bird.Rigidbody2D.gravityScale = 0;
     }
 
-    private void handleStartGame()
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(m_Active)
         {
-            
+            handleJump();
         }
     }
 
@@ -38,5 +40,20 @@ public class PlayerController : Singleton<PlayerController>
         {
             m_Jump = true;
         }
+    }
+
+    public void ActivateController()
+    {
+        m_Active = true;
+        m_Bird.MoveToStartPosition();
+        m_Bird.Rigidbody2D.gravityScale = Constants.GravityScale;
+    }
+
+    public void DeactivateController()
+    {
+        m_Active = false;
+        m_Bird.Rigidbody2D.linearVelocity = Vector2.zero;
+        m_Bird.Rigidbody2D.angularVelocity = 0.0f;
+        m_Bird.Rigidbody2D.gravityScale = 0;
     }
 }
