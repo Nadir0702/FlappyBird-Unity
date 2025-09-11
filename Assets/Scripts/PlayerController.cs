@@ -69,6 +69,10 @@ public class PlayerController : Singleton<PlayerController>
     {
         m_Active = false;
         stopEffects();
+    }
+
+    public void ResetBird()
+    {
         m_Bird.Rigidbody2D.linearVelocity = Vector2.zero;
         m_Bird.Rigidbody2D.angularVelocity = 0.0f;
         m_Bird.Rigidbody2D.gravityScale = 0;

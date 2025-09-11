@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,6 +9,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private float m_PipeSpeed;
     [SerializeField] private AudioSource m_HitAudioSource;
     [SerializeField] private AudioSource m_PointAudioSource;
+    [SerializeField] private AudioSource m_DeathAudioSource;
+    [SerializeField] private float m_Timeout = 3f;
+    
     
     private List<int> m_LeaderBoard;
     private int m_Score;
@@ -23,7 +27,7 @@ public class GameManager : Singleton<GameManager>
         m_LeaderBoard = new List<int>(Constants.LeaderBoardSize);
         for(int i = 0; i < m_LeaderBoard.Capacity; i++)
         {
-            m_LeaderBoard.Add(0);
+            m_LeaderBoard.Add(PlayerPrefs.GetInt($"LeaderBoard#{i + 1}", 0));
         }
         
         m_PipePool = new BestObjectPool<Pipe>(m_PipePrefab, Constants.NumOfPipes,Constants.NumOfPipes);
@@ -53,7 +57,7 @@ public class GameManager : Singleton<GameManager>
     public void SpawnPipe()
     {
         var newPipe = m_PipePool.GetObject();
-        newPipe.transform.position = new Vector3(Constants.ScreenEdgeX, Random.Range(-1, 3), 0);
+        newPipe.transform.position = new Vector3(Constants.ScreenEdgeX, Random.Range(-1, 3), 2);
         newPipe.Activate(m_PipeSpeed);
     }
 
@@ -63,15 +67,26 @@ public class GameManager : Singleton<GameManager>
         m_PointAudioSource.Play();
         CanvasManager.Instance.UpdateScore(m_Score);
     }
+    
+    private IEnumerator Timeout()
+    {
+        yield return new WaitForSeconds(m_Timeout);
+        PlayerController.Instance.ResetBird();
+        updateLeaderBoard();
+        CanvasManager.Instance.ShowMenuScreen(m_Score, m_LeaderBoard);
+    }
 
     public void HandleCrash()
     {
-        m_GameState = GameState.GameOver;
-        m_HitAudioSource.Play();
-        stopPipes();
-        PlayerController.Instance.DeactivateController();
-        updateLeaderBoard();
-        CanvasManager.Instance.ShowMenuScreen(m_Score, m_LeaderBoard);
+        if(m_GameState == GameState.InProgress)
+        {
+            m_GameState = GameState.GameOver;
+            m_HitAudioSource.Play();
+            m_DeathAudioSource.Play();
+            stopPipes();
+            PlayerController.Instance.DeactivateController();
+            StartCoroutine(Timeout());
+        }
     }
 
     private void updateLeaderBoard()
@@ -88,7 +103,10 @@ public class GameManager : Singleton<GameManager>
         for(int i = 0; i < m_LeaderBoard.Capacity; i++)
         {
             m_LeaderBoard[i] = newLeaderboard[i];
+            PlayerPrefs.SetInt($"LeaderBoard#{i + 1}", m_LeaderBoard[i]);
         }
+        
+        PlayerPrefs.Save();
     }
 
     private void stopPipes()
