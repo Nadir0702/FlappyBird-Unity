@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,6 +6,8 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private Pipe m_PipePrefab;
     [SerializeField] private float m_PipeSpeed;
+    [SerializeField] private AudioSource m_HitAudioSource;
+    [SerializeField] private AudioSource m_PointAudioSource;
     
     private List<int> m_LeaderBoard;
     private int m_Score;
@@ -59,12 +60,14 @@ public class GameManager : Singleton<GameManager>
     public void UpdateScore()
     {
         m_Score++;
+        m_PointAudioSource.Play();
         CanvasManager.Instance.UpdateScore(m_Score);
     }
 
     public void HandleCrash()
     {
         m_GameState = GameState.GameOver;
+        m_HitAudioSource.Play();
         stopPipes();
         PlayerController.Instance.DeactivateController();
         updateLeaderBoard();

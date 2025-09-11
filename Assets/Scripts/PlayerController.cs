@@ -6,6 +6,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Bird m_Bird;
     [SerializeField] private float m_JumpForce;
     [SerializeField] private Animator m_Animator;
+    [SerializeField] private AudioSource m_WingAudioSource;
     
     private bool m_Jump;
     private bool m_Active;
@@ -51,6 +52,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
+            m_WingAudioSource.Play();
             m_Jump = true;
         }
     }
