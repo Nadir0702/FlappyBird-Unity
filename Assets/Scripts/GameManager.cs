@@ -106,6 +106,19 @@ public class GameManager : Singleton<GameManager>
     {
         m_Score = 0;
         m_GameState = GameState.InProgress;
+        removeRemainingPipes();
         m_ActivePipes = 0;
+    }
+
+    private void removeRemainingPipes()
+    {
+        var activePipes = FindObjectsByType<Pipe>(FindObjectsSortMode.None);
+        foreach (var pipe in activePipes)
+        {
+            if (pipe.gameObject.activeInHierarchy)
+            {
+                m_PipePool.ReleaseObject(pipe);
+            }
+        }
     }
 }

@@ -1,3 +1,7 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -25,7 +29,23 @@ public class CanvasManager : Singleton<CanvasManager>
         GameManager.Instance.OnStartGameClicked();
         PlayerController.Instance.ActivateController();
     }
-
+    
+    public void OnRestartButtonClickedHandler()
+    {
+        m_Logo.SetActive(false);
+        m_MenuScreen.SetActive(false);
+        GameManager.Instance.OnStartGameClicked();
+        PlayerController.Instance.ActivateController();
+    }
+    
+    public void OnQuitButtonClickedHandler()
+    {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
     public void ShowMenuScreen(int i_CurrentScore, List<int> i_LeaderBoard)
     {
