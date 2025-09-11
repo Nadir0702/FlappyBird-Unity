@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
+    private static readonly int sr_Flying = Animator.StringToHash("Flying");
     [SerializeField] private Bird m_Bird;
     [SerializeField] private float m_JumpForce;
+    [SerializeField] private Animator m_Animator;
     
     private bool m_Jump;
     private bool m_Active;
@@ -13,6 +15,17 @@ public class PlayerController : Singleton<PlayerController>
         m_Jump = false;
         m_Active = false;
         m_Bird.Rigidbody2D.gravityScale = 0;
+        startEffects();
+    }
+    
+    private void startEffects()
+    {
+        m_Animator.SetBool(sr_Flying, true);
+    }
+    
+    private void stopEffects()
+    {
+        m_Animator.SetBool(sr_Flying, false);
     }
 
     private void Update()
@@ -47,11 +60,13 @@ public class PlayerController : Singleton<PlayerController>
         m_Active = true;
         m_Bird.MoveToStartPosition();
         m_Bird.Rigidbody2D.gravityScale = Constants.GravityScale;
+        startEffects();
     }
 
     public void DeactivateController()
     {
         m_Active = false;
+        stopEffects();
         m_Bird.Rigidbody2D.linearVelocity = Vector2.zero;
         m_Bird.Rigidbody2D.angularVelocity = 0.0f;
         m_Bird.Rigidbody2D.gravityScale = 0;
