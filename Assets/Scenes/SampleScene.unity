@@ -628,26 +628,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1526618359}
     m_Modifications:
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_text
-      value: '#5: 000'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontSize
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1772855176130659150, guid: 817f792d34d61f5418030de600fc855b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -825,26 +805,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1526618359}
     m_Modifications:
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_text
-      value: '#2: 000'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontSize
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1772855176130659150, guid: 817f792d34d61f5418030de600fc855b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -947,26 +907,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1526618359}
     m_Modifications:
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_text
-      value: '#3: 000'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontSize
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1772855176130659150, guid: 817f792d34d61f5418030de600fc855b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3417,26 +3357,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1526618359}
     m_Modifications:
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_text
-      value: '#4: 000'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontSize
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1531399254239252247, guid: 817f792d34d61f5418030de600fc855b, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1772855176130659150, guid: 817f792d34d61f5418030de600fc855b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
