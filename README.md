@@ -4,7 +4,6 @@ A faithful recreation of the classic Flappy Bird game built with **Unity 6.0**. 
 
 ![Unity](https://img.shields.io/badge/Unity-6000.0.54f1-blue.svg)
 ![C#](https://img.shields.io/badge/C%23-239120.svg?logo=c-sharp&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## 🎮 Game Features
 
@@ -18,20 +17,17 @@ A faithful recreation of the classic Flappy Bird game built with **Unity 6.0**. 
 ### Visual & Audio
 
 -   **Smooth bird flying animation** - Three-frame wing flap animation (upflap, midflap, downflap)
--   **Multiple bird color variants** - Red, blue, and yellow bird sprites
--   **Day/night background themes** - Dynamic visual variety
 -   **Comprehensive audio system**:
     -   🎵 Wing flap sound effects
     -   🎯 Point scoring audio
     -   💥 Collision/hit sounds
     -   💀 Death sound effects
-    -   🌪️ Swoosh transition sounds
 
 ### Advanced Features
 
 -   **Persistent Leaderboard** - Top 5 scores saved between game sessions using PlayerPrefs
 -   **Smart Object Pooling** - Efficient pipe management using Unity's ObjectPool system
--   **Coroutine-based Game Over** - 3-second delay before showing menu screen for better UX
+-   **Coroutine-based Game Over** - 1.5-second delay before showing menu screen for better UX
 -   **Singleton Architecture** - Clean, maintainable code structure
 -   **State Management** - Proper game state handling (NotStarted, InProgress, GameOver)
 
@@ -136,13 +132,6 @@ Assets/
 -   **Leaderboard Size**: Update `LeaderBoardSize` in Constants.cs
 -   **Game Over Delay**: Modify `m_Timeout` in GameManager
 
-### Adding New Features
-
--   **New Bird Colors**: Add sprites to Assets/sprites/ and update prefabs
--   **Power-ups**: Extend the scoring system in GameManager
--   **New Audio**: Add sound files to Assets/audio/ and reference in scripts
--   **Additional Levels**: Create new scenes and modify the scene management
-
 ## 📱 Build Information
 
 ### Supported Platforms
@@ -161,32 +150,11 @@ Assets/
 
 ## 🎨 Asset Credits
 
-This project uses classic Flappy Bird-inspired assets:
+This project uses classic Flappy Bird-inspired assets from [flappy-bird-assets](https://github.com/samuelcust/flappy-bird-assets):
 
 -   **Sprites**: Custom bird animations and pipe designs
 -   **Audio**: Classic arcade-style sound effects
 -   **UI**: Clean, minimalist interface design
-
-## 🤝 Contributing
-
-Contributions are welcome! Here's how you can help:
-
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/AmazingFeature`)
-3. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
-4. **Push to the branch** (`git push origin feature/AmazingFeature`)
-5. **Open a Pull Request**
-
-### Development Guidelines
-
--   Follow C# naming conventions
--   Add comments for complex logic
--   Test on multiple platforms
--   Update documentation for new features
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -197,15 +165,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**Project Maintainer**: [Your Name]
+**Project Maintainer**: Nadir Elmakias
 
--   **GitHub**: [@yourusername](https://github.com/yourusername)
--   **Email**: your.email@example.com
-
+-   **GitHub**: [@Nadir0702](https://github.com/Nadir0702)
 ---
 
 ⭐ **Star this repository** if you found it helpful!
-
-🐛 **Found a bug?** Please open an issue with detailed steps to reproduce.
 
 💡 **Have a feature request?** We'd love to hear your ideas!
